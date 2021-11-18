@@ -11,3 +11,6 @@ Main features
 * Supports time travelling in Redux DevTools
 * Supports running side effects on route change that are defined in route configuration
 
+License
+-------
+[MIT License](https://github.com/burnmaniac/connected-redux-router/blob/main/LICENSE)
