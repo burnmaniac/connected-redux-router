@@ -50,7 +50,7 @@ export class Router extends Component {
         }
 
         // Dispatch initial location changed action (POP
-        this.props.store.dispatch(locationChanged(props.history.location, props.history.action));
+        this.props.store.dispatch(locationChanged(props.history.location, props.history.action, true));
     }
 
     componentDidMount() {

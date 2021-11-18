@@ -21,9 +21,9 @@ export const LOCATION_CHANGE_SIDE_EFFECTS = '@@connected-router/LOCATION_CHANGE_
  */
 export const END_SIDE_EFFECTS_RUNNING = '@@connected-router/END_SIDE_EFFECTS_RUNNING';
 
-export const locationChanged = (location, action) => ({
+export const locationChanged = (location, action, isFirstRender = false) => ({
     type: LOCATION_CHANGED,
-    payload: {location, action},
+    payload: {location, action, isFirstRender},
 });
 
 export const locationChangeSideEffects = payload => ({
