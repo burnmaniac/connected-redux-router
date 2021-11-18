@@ -1,0 +1,12 @@
+language: node_js
+
+node_js:
+  - "node"
+  - "12"
+  - "14"
+  - "16"
+
+cache:
+  yarn: true
+  directories:
+    - "node_modules"
