@@ -1,0 +1,46 @@
+{
+    "name": "@burnmaniac/connected-router-saga",
+    "version": "0.0.3",
+    "author": "Danijel Obradovic",
+    "license": "MIT",
+    "private": false,
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.esm.js",
+    "source": "src/index.js",
+    "sideEffects": false,
+    "files": [
+        "*.md",
+        "*.js",
+        "*.ts",
+        "dist"
+    ],
+    "scripts": {
+        "build": "rollup -c",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.16.0",
+        "@babel/core": "^7.16.0",
+        "@babel/preset-env": "^7.16.4",
+        "@babel/preset-react": "^7.16.0",
+        "@rollup/plugin-babel": "^5.3.0",
+        "eslint": "^8.2.0",
+        "eslint-plugin-react": "^7.27.0",
+        "rollup": "^2.60.0",
+        "rollup-plugin-delete": "^2.0.0",
+        "rollup-plugin-peer-deps-external": "^2.2.4"
+    },
+    "peerDependencies": {
+        "prop-types": "^15.7.2",
+        "react": "^17.0.0",
+        "react-router": "^6.0.0",
+        "redux-saga": "^1.1.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/burnmaniac/connected-redux-router"
+    },
+    "bugs": {
+        "url": "https://github.com/burnmaniac/connected-redux-router/issues"
+    }
+}
