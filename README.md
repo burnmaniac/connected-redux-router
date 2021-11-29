@@ -1,4 +1,4 @@
-Connected Redux Router
+Connected Redux Router [![Build Status](https://app.travis-ci.com/burnmaniac/connected-redux-router.svg?branch=main)](https://app.travis-ci.com/burnmaniac/connected-redux-router)
 ===
 
 Main features
