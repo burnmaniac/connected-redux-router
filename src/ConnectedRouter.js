@@ -33,6 +33,8 @@ export class Router extends Component {
             location: props.history.location,
         };
 
+        this.timeTravelling = false;
+
         if (this.props.hasTimeTravel === true) {
             // Subscribe to store changes to check if we are in time travelling
             this.removeStoreSubscription = props.store.subscribe(() => {
