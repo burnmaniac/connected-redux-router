@@ -1,5 +1,5 @@
 import {matchRoutes} from 'react-router';
-import {call, cancel, fork, take} from 'redux-saga/effects';
+import {call, cancel, fork, take, actionChannel} from 'redux-saga/effects';
 import {END_SIDE_EFFECTS_RUNNING, LOCATION_CHANGED, locationChangeSideEffects} from './connected-router.actions';
 
 const prepareRouteState = function* (routes, location) {
@@ -28,14 +28,22 @@ const runBranchSagas = function* (branchSagas) {
     while (branchRouteSagas.length > 0) {
         const [saga, ...args] = branchRouteSagas.pop();
 
-        shouldContinueRunning = yield call(saga, ...args);
+        const {payload} = args[0];
+
+        let effect = call;
+
+        if (payload && payload.hasOwnProperty('isParallel') && payload.isParallel) {
+            effect = fork;
+        }
+
+        shouldContinueRunning = yield effect(saga, ...args);
 
         if (shouldContinueRunning === END_SIDE_EFFECTS_RUNNING) {
             break;
         }
     }
 
-    if (subBranchSagas.length > 0) {
+    if (subBranchSagas.length > 0 && shouldContinueRunning !== END_SIDE_EFFECTS_RUNNING) {
         yield* runBranchSagas(subBranchSagas);
     }
 };
@@ -70,8 +78,10 @@ const getBranchSagas = function (routeBranch, location) {
 export const connectedRouteWatcher = function* (routes) {
     let loader;
 
+    const requestChannel = yield actionChannel('LOCATION_CHANGED');
+
     while (true) {
-        const {payload} = yield take(LOCATION_CHANGED);
+        const {payload} = yield take(requestChannel);
 
         if (loader) {
             yield cancel(loader);
